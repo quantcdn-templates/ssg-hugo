@@ -1,0 +1,17 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "My Hugo Site"
+theme = "quant-minimal"
+
+[params]
+  description = "A Hugo site powered by QuantCDN"
+  author = "Your Name"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]

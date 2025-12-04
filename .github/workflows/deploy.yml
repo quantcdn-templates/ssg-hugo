@@ -1,0 +1,55 @@
+name: "Deploy to QuantCDN"
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Cache local revision file
+        id: cache-quant-revisions
+        uses: actions/cache@v4
+        with:
+          path: .quant-revision
+          key: quant-revision
+
+      - name: Build static output
+        run: hugo --minify
+
+      - name: Deploy updates to QuantCDN
+        uses: quantcdn/deploy-action@v5.0.0
+        with:
+          customer: ${{ vars.QUANT_CUSTOMER }}
+          project: ${{ vars.QUANT_PROJECT }}
+          token: ${{ secrets.QUANT_TOKEN }}
+          endpoint: ${{ vars.QUANT_ENDPOINT || 'https://api.quantcdn.io/v1' }}
+          dir: public
+          chunk-size: 20
+          skip-purge: true
+
+      - name: Purge the QuantCDN cache
+        uses: quantcdn/purge-action@v2
+        with:
+          customer: ${{ vars.QUANT_CUSTOMER }}
+          project: ${{ vars.QUANT_PROJECT }}
+          token: ${{ secrets.QUANT_TOKEN }}
+          endpoint: ${{ vars.QUANT_ENDPOINT || 'https://api.quantcdn.io/v1' }}
+          url_pattern: "/*"
