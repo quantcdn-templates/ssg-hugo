@@ -2,7 +2,7 @@
 
 A minimal Hugo static site starter template configured for deployment to QuantCDN.
 
-[![Deploy to QuantCDN](https://www.quantcdn.io/img/quant-deploy-btn-sml.svg)](https://dashboard.quantcdn.io/projects/add/jamstack?template=hugo)
+[![Deploy to QuantCDN](https://www.quantcdn.io/img/quant-deploy-btn-sml.svg)](https://dashboard.quantcdn.io/projects/add/jamstack?template=ssg-hugo)
 
 ## Features
 
@@ -43,10 +43,9 @@ This template includes a GitHub Actions workflow that automatically:
 ### Environment Variables
 
 The following are automatically configured by QuantCDN:
-- `QUANT_CUSTOMER` - Your Quant customer/organization ID (repository variable)
+- `QUANT_CUSTOMER` - Your Quant customer ID (repository variable)
 - `QUANT_PROJECT` - Your Quant project ID (repository variable)
 - `QUANT_TOKEN` - Your Quant API token (secret)
-- `QUANT_ENDPOINT` - API endpoint (optional variable, defaults to https://api.quantcdn.io/v1)
 
 ## Customization
 

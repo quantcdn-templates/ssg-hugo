@@ -1,0 +1,10 @@
+[{
+    "title": "Hugo",
+    "url": "/deploy/step-one?template=ssg-hugo",
+    "summary": "The world's fastest framework for building websites.",
+    "content": "Deploy Hugo, the lightning-fast static site generator written in Go. Features instant builds, flexible templating, and excellent performance for sites of any size.",
+    "categories": ["go"],
+    "tags": ["hugo", "go", "static", "ssg", "blog"],
+    "template_type": "ssg",
+    "requires_db": false
+}]
