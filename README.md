@@ -2,7 +2,7 @@
 
 A minimal Hugo static site starter template configured for deployment to QuantCDN.
 
-[![Deploy to QuantCDN](https://www.quantcdn.io/img/quant-deploy-btn-sml.svg)](https://dashboard.quantcdn.io/projects/add/jamstack?template=ssg-hugo)
+[![Deploy to QuantCDN](https://www.quantcdn.io/img/quant-deploy-btn-sml.svg)](https://dashboard.quantcdn.io/projects/add/jamstack/ssg-hugo)
 
 ## Features
 
