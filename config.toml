@@ -1,7 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
 title = "My Hugo Site"
-theme = "quant-minimal"
 
 [params]
   description = "A Hugo site powered by QuantCDN"

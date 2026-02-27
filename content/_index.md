@@ -22,6 +22,6 @@ Edit this file at `content/_index.md` to customize your homepage.
 ## Next Steps
 
 1. Add more content in the `content/` directory
-2. Customize your theme in `layouts/`
+2. Customize your templates in `layouts/`
 3. Update site settings in `config.toml`
 4. Push to GitHub to deploy automatically

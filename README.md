@@ -24,12 +24,13 @@ A minimal Hugo static site starter template configured for deployment to QuantCD
 .
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml       # Automated deployment workflow
-├── archetypes/              # Content templates
-├── content/                 # Your content (markdown files)
-├── layouts/                 # HTML templates
-├── static/                  # Static assets (images, CSS, JS)
-├── config.toml             # Hugo configuration
+│       ├── ci.yml            # CI build validation workflow
+│       └── deploy.yml        # Automated deployment workflow
+├── content/                  # Your content (markdown files)
+├── layouts/                  # HTML templates
+├── quant/
+│   └── meta.json             # Quant template metadata
+├── config.toml               # Hugo configuration
 └── README.md
 ```
 
@@ -57,7 +58,6 @@ Edit `config.toml` to customize your site:
 baseURL = "https://your-domain.com/"
 languageCode = "en-us"
 title = "My Hugo Site"
-theme = "quant-minimal"
 ```
 
 ### Adding Content
@@ -69,7 +69,7 @@ hugo new posts/my-first-post.md
 
 ### Styling
 
-Add custom CSS in `static/css/custom.css` or modify the theme in `layouts/`.
+Modify the inline styles in `layouts/index.html` or add a `static/css/` directory for external stylesheets.
 
 ## Learn More
 
