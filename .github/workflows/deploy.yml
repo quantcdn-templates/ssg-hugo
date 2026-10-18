@@ -32,7 +32,7 @@ jobs:
         run: hugo --minify
 
       - name: Deploy updates to QuantCDN
-        uses: quantcdn/deploy-action@v6
+        uses: quantcdn/deploy-action@169cf76a4c0517be4d6fe4b6802e3abaf8ef4afc # v7.0.0
         with:
           customer: ${{ vars.QUANT_CUSTOMER }}
           project: ${{ vars.QUANT_PROJECT }}
