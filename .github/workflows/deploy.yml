@@ -12,6 +12,9 @@ concurrency:
 jobs:
   init:
     runs-on: ubuntu-latest
+    env:
+      # Template repositories have no Quant credentials; they only verify the build.
+      DEPLOY_CONFIGURED: ${{ vars.QUANT_CUSTOMER != '' && vars.QUANT_PROJECT != '' && secrets.QUANT_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,7 +34,12 @@ jobs:
       - name: Build static output
         run: hugo --minify
 
+      - name: Deployment setup
+        if: env.DEPLOY_CONFIGURED != 'true'
+        run: echo 'Build verified. Deployment requires QUANT_CUSTOMER and QUANT_PROJECT variables and a QUANT_TOKEN secret.' >> "$GITHUB_STEP_SUMMARY"
+
       - name: Deploy updates to QuantCDN
+        if: env.DEPLOY_CONFIGURED == 'true'
         uses: quantcdn/deploy-action@169cf76a4c0517be4d6fe4b6802e3abaf8ef4afc # v7.0.0
         with:
           customer: ${{ vars.QUANT_CUSTOMER }}
@@ -43,6 +51,7 @@ jobs:
           skip-purge: true
 
       - name: Purge the QuantCDN cache
+        if: env.DEPLOY_CONFIGURED == 'true'
         uses: quantcdn/purge-action@v6
         with:
           customer: ${{ vars.QUANT_CUSTOMER }}
