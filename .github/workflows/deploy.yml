@@ -40,7 +40,7 @@ jobs:
 
       - name: Deploy updates to QuantCDN
         if: env.DEPLOY_CONFIGURED == 'true'
-        uses: quantcdn/deploy-action@169cf76a4c0517be4d6fe4b6802e3abaf8ef4afc # v7.0.0
+        uses: quantcdn/deploy-action@9bf8cae8497ab6628d4b248db9eb11464f37e1e5 # v7.0.1
         with:
           customer: ${{ vars.QUANT_CUSTOMER }}
           project: ${{ vars.QUANT_PROJECT }}
