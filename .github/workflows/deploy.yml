@@ -52,7 +52,7 @@ jobs:
 
       - name: Purge the QuantCDN cache
         if: env.DEPLOY_CONFIGURED == 'true'
-        uses: quantcdn/purge-action@6010adb4bef33827d7f7d1be8b1d955f693568e4 # v7.0.0
+        uses: quantcdn/purge-action@5c2a85f5318917ef12b9099cf101fe6bd75d0d06 # v7.1.0
         with:
           customer: ${{ vars.QUANT_CUSTOMER }}
           project: ${{ vars.QUANT_PROJECT }}
