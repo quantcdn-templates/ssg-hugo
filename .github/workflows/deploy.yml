@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   init:
-    runs-on: ubuntu-latest
+    runs-on: ${{ contains(fromJSON('["push","schedule","workflow_dispatch"]'), github.event_name) && vars.QUANT_RUNS_ON_X64 && fromJSON(vars.QUANT_RUNS_ON_X64) || 'ubuntu-latest' }}
     env:
       # Template repositories have no Quant credentials; they only verify the build.
       DEPLOY_CONFIGURED: ${{ vars.QUANT_CUSTOMER != '' && vars.QUANT_PROJECT != '' && secrets.QUANT_TOKEN != '' }}
